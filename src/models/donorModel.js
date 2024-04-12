@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const recieverSchema = mongoose.Schema(
+const donorSchema = mongoose.Schema(
   {
     name: {
       type: String,
@@ -10,21 +10,14 @@ const recieverSchema = mongoose.Schema(
       type: String,
       required: [true, "Please add contact information"],
     },
-    founder: {
-      type: String,
-      required: [false],
-    },
     location: {
       type: String,
       required: [true, "Please add the name"],
     },
-    description: {
-      type: String,
-      required: [true, "Please add the name"],
-    },
-    needs: [
+    items: [
       {
         type: String,
+        description: String,
       },
     ],
   },
@@ -33,6 +26,6 @@ const recieverSchema = mongoose.Schema(
   }
 );
 
-const Reciever = mongoose.model("Reciever", recieverSchema);
+const Donor = mongoose.model("Donor", donorSchema);
 
-module.exports = Reciever;
+module.exports = Donor;
