@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 
 const connectToDB = require("./config/connectToDB");
+const signup = require("./routes/signup");
 const dotenv = require("dotenv").config();
 
 connectToDB();
@@ -16,7 +17,7 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-// app.use("/signup", signup);
+app.use("/signup", signup);
 // app.use("/login", login);
 // app.use("/profile", profile);
 

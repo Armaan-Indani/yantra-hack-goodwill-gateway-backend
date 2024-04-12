@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const recieverSchema = mongoose.Schema(
+const receiverSchema = mongoose.Schema(
   {
     name: {
       type: String,
@@ -45,6 +45,6 @@ const recieverSchema = mongoose.Schema(
   }
 );
 
-const Reciever = mongoose.model("Reciever", recieverSchema);
+const Receiver = mongoose.model("Receiver", receiverSchema);
 
-module.exports = Reciever;
+module.exports = Receiver;

@@ -30,12 +30,12 @@ const donorSchema = mongoose.Schema(
       type: String,
       required: [true, "Please add the name"],
     },
-    items: [
-      {
-        item: { type: String },
-        description: { type: String },
-      },
-    ],
+    // items: [
+    //   {
+    //     item: { type: String },
+    //     description: { type: String },
+    //   },
+    // ],
   },
   {
     timestamps: true,
