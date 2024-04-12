@@ -20,18 +20,31 @@ try {
     }
 
     email = email.trim();
+    email = emai.toLowerCase();
+
+    if (password.length < 7 || password.length > 20) {
+      throw new Error("Password length must be 8 to 20 chars");
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const donor = await Donor.create({
+      name,
+      email,
+      phone,
+      password: hashedPassword,
+      location,
+      items,
+    });
+
+    if (donor) {
+      console.log(`Donor created for ${donor}`);
+      res.status(201);
+      res.json({ _id: donor.id, email: donor.email });
+    } else {
+      res.status(400);
+      throw new Error("Mentor data is not valid");
+    }
   };
 } catch (e) {
   res.json({ error: e });
 }
-
-// const multer = require("multer");
-
-// const storage = multer.diskStorage({
-//   destination: "uploads/",
-//   filename: function (req, file, cb) {
-//     cb(null, file.originalname);
-//   },
-// });
-
-// const upload = multer({ storage });
