@@ -6,9 +6,25 @@ const recieverSchema = mongoose.Schema(
       type: String,
       required: [true, "Please add the name"],
     },
-    contact: {
+    email: {
       type: String,
-      required: [true, "Please add contact information"],
+      required: [true, "Please add an email id"],
+      unique: [true, "Email id already in use"],
+    },
+    phone: {
+      type: String,
+      required: [true, "Please add contact number"],
+      unique: [true, "Phone number already in use"],
+    },
+    password: {
+      type: String,
+      required: [true, "Please enter a password"],
+      validate: {
+        validator: function (str) {
+          return str.length > 7;
+        },
+        message: "At least 8 charecters required",
+      },
     },
     founder: {
       type: String,
@@ -22,11 +38,7 @@ const recieverSchema = mongoose.Schema(
       type: String,
       required: [true, "Please add the name"],
     },
-    needs: [
-      {
-        type: String,
-      },
-    ],
+    needs: [{ type: String }],
   },
   {
     timestamps: true,
