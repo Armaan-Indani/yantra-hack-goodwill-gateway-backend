@@ -32,13 +32,19 @@ const receiverSchema = mongoose.Schema(
     },
     location: {
       type: String,
-      required: [true, "Please add the name"],
+      required: [true, "Please add the location"],
     },
     description: {
       type: String,
-      required: [true, "Please add the name"],
+      required: [true, "Please add the description"],
     },
     needs: [{ type: String }],
+    pendingRequests: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "request",
+      },
+    ],
   },
   {
     timestamps: true,
